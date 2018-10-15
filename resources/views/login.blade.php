@@ -33,13 +33,16 @@
 			<h1>Login</h1>
 
 
+			@if (session('erro'))
 			<!-- LOGIN ou SENHA INCORRETA -->
-				<div class="alert alert-danger">
-					<strong>Erro!</strong> Login ou Senha Incorreta
-				</div>
-				<!-- FIM [LOGIN OU SENHA INCORRETA] -->
+			<div class="alert alert-danger">
+				<strong>Erro!</strong> {{session('erro')}}
+			</div>
+			<!-- FIM [LOGIN OU SENHA INCORRETA] -->
+			@endif
 
 			<form action="{{url('logar')}}" method="post">
+				@csrf
 				
 			  	<div class="form-group">
 			    	<label for="campo-email">Email:</label>

@@ -10,6 +10,17 @@ class LivrosController extends Controller {
         return view('livros.cadastro');
     }
 
+    public function salvar(Request $request) {
+        $request->validate([
+            'isbn'  => 'required|integer',
+            'titulo'=> 'required',
+            'autor' => 'required',
+            'resumo'=> 'required'
+        ]);
+
+        return redirect()->route('livros.listar')->with('acao', 'Cadastrado com sucesso');
+    }
+
     public function listar() {
         $dados['livros'] = [
             ['id' => 1, 'isbn' => '999999999', 'autor' => 'Autor 1', 'titulo' => 'Livro 1'],
@@ -31,6 +42,17 @@ class LivrosController extends Controller {
         
         return view('livros.edicao', $dados);
     }
+    
+    public function atualizar(Request $request) {
+        $request->validate([
+            'isbn'  => 'required|integer',
+            'titulo'=> 'required',
+            'autor' => 'required',
+            'resumo'=> 'required'
+        ]);
+
+        return redirect()->route('livros.listar')->with('acao', 'Atualizado com sucesso');
+    }
 
     public function visualizar($id) {
         $dados = ['livro' => [
@@ -45,5 +67,6 @@ class LivrosController extends Controller {
 
     public function excluir($id) {
      
+        return redirect()->route('livros.listar')->with('acao', 'Excluído com sucesso');
     }
 }

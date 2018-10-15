@@ -6,15 +6,20 @@
 @section('conteudo_principal')
 		<h1>Cadastro de Livros</h1>
 
+		@if ($errors->any())
 		<!-- ERRO NO CADASTRO -->
 		<div class="alert alert-danger">
 			<strong>Erro!</strong>
-			<p> Informe o título do livro</p>
+			@foreach($errors->all() as $erro)
+			<p> {{$erro}}</p>
+			@endforeach
 		</div>
 		<!-- [FIM] ERRO -->
+		@endif
 
+		<form action="{{route('livros.salvar')}}" method="post">
+			@csrf
 
-		<form action="" method="post">
 			<!-- ISBN -->
 			<div class="form-group">
 				<label for="campo-isbn">ISBN:</label>
@@ -30,7 +35,7 @@
 			<!-- AUTOR -->
 			<div class="form-group">
 				<label for="campo-email">Autor:</label>
-				<input type="email" class="form-control" name="autor" id="campo-email">
+				<input type="text" class="form-control" name="autor" id="campo-email">
 			</div>
 
 			<!-- CATEGORIA -->
