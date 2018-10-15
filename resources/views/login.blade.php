@@ -39,7 +39,7 @@
 				</div>
 				<!-- FIM [LOGIN OU SENHA INCORRETA] -->
 
-			<form action="" method="post">
+			<form action="{{url('logar')}}" method="post">
 				
 			  	<div class="form-group">
 			    	<label for="campo-email">Email:</label>
