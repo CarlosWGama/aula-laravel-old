@@ -13,7 +13,7 @@
 
 Route::get('/', 'LoginController@login');
 Route::get('/login', 'LoginController@login');
-Route::get('/logar', 'LoginController@logar');
+Route::post('/logar', 'LoginController@logar');
 Route::get('/logout', 'LoginController@logout');
 
 Route::group(['prefix' => 'livros'], function () {
