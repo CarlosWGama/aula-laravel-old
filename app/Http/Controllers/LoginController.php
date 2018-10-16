@@ -18,6 +18,6 @@ class LoginController extends Controller {
     }
 
     public function logout() {
-        return view('login');
+        return redirect('login');
     }
 }
