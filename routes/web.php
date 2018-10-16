@@ -16,7 +16,7 @@ Route::get('/login', 'LoginController@login');
 Route::post('/logar', 'LoginController@logar');
 Route::get('/logout', 'LoginController@logout');
 
-Route::group(['prefix' => 'livros'], function () {
+Route::group(['prefix' => 'livros', 'middleware' => ['login']], function () {
     Route::get('/', 'LivrosController@listar')->name('livros.listar');
     Route::get('/novo', 'LivrosController@novo')->name('livros.novo');
     Route::post('/salvar', 'LivrosController@salvar')->name('livros.salvar');

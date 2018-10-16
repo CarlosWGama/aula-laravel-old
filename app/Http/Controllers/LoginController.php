@@ -11,13 +11,15 @@ class LoginController extends Controller {
     }
 
     public function logar(Request $request) {
-        if ($request->email == 'teste@teste.com' && $request->senha == '123456')
+        if ($request->email == 'teste@teste.com' && $request->senha == '123456') {
+            $request->session()->put('usuario', 'Carlos');
             return redirect()->route('livros.listar');
-        else
+        } else
             return redirect('login')->with('erro', 'Login ou senha inválida');
     }
 
-    public function logout() {
+    public function logout(Request $request) {
+        $request->session()->flush();
         return redirect('login');
     }
 }

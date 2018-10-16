@@ -3,7 +3,8 @@
 @section('menu_listar', 'active')
 
 @section('conteudo_principal')
-	<h1>Livros</h1>
+		<h1>Livros</h1>
+		<h2>Olá, {{session('usuario')}}</h2>
 		@if(session('acao'))
 			<p class="alert alert-success">{{session('acao')}}</p>
 		@endif
