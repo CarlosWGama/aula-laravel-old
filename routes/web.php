@@ -11,17 +11,6 @@
 |
 */
 
-Route::get('/', 'LoginController@login');
-Route::get('/login', 'LoginController@login');
-Route::post('/logar', 'LoginController@logar');
-Route::get('/logout', 'LoginController@logout');
-
-Route::group(['prefix' => 'livros', 'middleware' => ['login']], function () {
-    Route::get('/', 'LivrosController@listar')->name('livros.listar');
-    Route::get('/novo', 'LivrosController@novo')->name('livros.novo');
-    Route::post('/salvar', 'LivrosController@salvar')->name('livros.salvar');
-    Route::get('/editar/{id}', 'LivrosController@editar')->name('livros.editar');
-    Route::post('/atualizar/{id}', 'LivrosController@atualizar')->name('livros.atualizar');
-    Route::get('/excluir/{id}', 'LivrosController@excluir')->name('livros.excluir');
-    Route::get('/visualizar/{id}', 'LivrosController@visualizar')->name('livros.visualizar');
+Route::get('/', function() {
+   return view('welcome');
 });
